@@ -47,7 +47,7 @@ function buscarAluno(nome){
 Essa função só poderá ser executada em um aluno já devidamente cadastrado no sistema,
 e deverá armazenar a data atual no momento da matricula.
 Lembre-se de exibir o feedback para o usuário. */
-function matricularAluno(aluno/*:object*/, curso/*:string*/){
+function matricularAluno(aluno, curso){
   let novoCurso = {nomeDoCurso: curso,
                    dataMatricula: new Date}
 
@@ -65,10 +65,17 @@ function matricularAluno(aluno/*:object*/, curso/*:string*/){
     console.log(`O aluno '${aluno.nome}' não está cadastrado no sistema`)
 }
 
-function aplicarFalta(aluno/*:object*/){
-/*
-    Ao receber um aluno devidamente cadastrado em nossa lista. Você deverá incrementar uma falta ao aluno. Você deverá dar um feedback ao concluir a tarefa. Só poderá aplicar falta em aluno se o mesmo tiver matriculado em um curso.
-*/
+/* Ao receber um aluno devidamente cadastrado em nossa lista.
+Você deverá incrementar uma falta ao aluno.
+Você deverá dar um feedback ao concluir a tarefa.
+Só poderá aplicar falta em aluno se o mesmo tiver matriculado em um curso.*/
+function aplicarFalta(aluno){
+  if (aluno.cursos.length > 0) {
+    aluno.faltas++
+    console.log(`Falta registrada para o aluno '${aluno.nome}`)
+  }
+  else
+    console.log(`O aluno '${aluno.nome}' não possui cursos matriculados`)
 }
 
 function aplicarNota(aluno/*:object*/){
