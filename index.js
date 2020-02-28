@@ -18,20 +18,31 @@ function adicionarAluno(nome){
 
   alunosDaEscola.push(novoAluno)
 
-  console.log(`O aluno ${nome} foi cadastrado com sucesso`)
+  console.log(`O aluno ${nome} foi cadastrado com sucesso!`)
 }
 
 /*Com essa função o usuário poderá ver todos os alunos cadastrados atualmente no sistema. 
 Vale dizer que As informações deverão ser exibidas em um formato amigável.*/
 function listarAlunos(){
-  alunosDaEscola.forEach((aluno) => {
+  alunosDaEscola.forEach(aluno => {
     console.log(`###############\nNome: ${aluno.nome}\nNotas: ${aluno.notas}\nCursos: ${JSON.stringify(aluno.cursos)}\nFaltas: ${aluno.faltas}`)
   })
 }
 
-function buscarAluno(nome/*:string*/){
-/* Por meio dessa função, podemos pesquisar um aluno por nome na lista de aluno. Ela deverá exibir um feedback, tanto para quando encontrar o aluno, tanto quando não encontrar. E deverá devolver um aluno em seu retorno. */
+/* Por meio dessa função, podemos pesquisar um aluno por nome na lista de aluno.
+Ela deverá exibir um feedback, tanto para quando encontrar o aluno, tanto quando não encontrar.
+E deverá devolver um aluno em seu retorno. */
+function buscarAluno(nome){
+  let resultado = alunosDaEscola.filter(aluno => aluno.nome.includes(nome))
+
+  if (resultado.length == 0)
+    console.log(`Nenhum aluno com o parâmetro '${nome}' foi encontrado!`)
+  else
+    console.log(resultado.length == 1 ? `Foi encontado ${resultado.length} aluno com o parâmetro '${nome}'` : `Foram encontados ${resultado.length} alunos com o parâmetro '${nome}'`)
+    
+  return resultado
 }
+
 function matricularAluno(aluno/*:object*/, curso/*:string*/){
 /* Essa funcionalidade irá permitir, cadastrar um aluno em um curso. 
 Essa função só poderá ser executada em um aluno já devidamente cadastrado no sistema, e deverá armazenar a data atual no momento da matricula
