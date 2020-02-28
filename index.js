@@ -91,9 +91,11 @@ function aplicarNota(aluno, nota){
     console.log(`Nota não registrada pois o aluno '${aluno.nome}' não possui cursos matriculados`)
 }
 
-function aprovarAluno(aluno/*:object*/){
-/* 
-Ao receber um aluno devidamente cadastrado em nossa lista, deverá dizer se o mesmo está aprovado ou não. Os critérios de aprovação são: ter no máximo 3 faltas e média 7 em notas.
-Só o aluno só poderá ser aprovado se o mesmo tiver matriculado em um curso.
-*/
+/* Ao receber um aluno devidamente cadastrado em nossa lista, deverá dizer se o mesmo está aprovado ou não.
+Os critérios de aprovação são: ter no máximo 3 faltas e média 7 em notas.
+Só o aluno só poderá ser aprovado se o mesmo tiver matriculado em um curso.*/
+function aprovarAluno(aluno){
+  let media = aluno.notas.reduce((a, b) => a + b) / aluno.notas.length
+  
+  console.log(`O aluno '${aluno.nome}' está`, aluno.faltas <= 3 && aluno.cursos.length > 0 && media >= 7 ? `aprovado!` : `Reprovado!`)
 }
