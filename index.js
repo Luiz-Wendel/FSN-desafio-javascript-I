@@ -75,13 +75,20 @@ function aplicarFalta(aluno){
     console.log(`Falta registrada para o aluno '${aluno.nome}`)
   }
   else
-    console.log(`O aluno '${aluno.nome}' não possui cursos matriculados`)
+    console.log(`Falta não registrada pois o aluno '${aluno.nome}' não possui cursos matriculados`)
 }
 
-function aplicarNota(aluno/*:object*/){
-/*
-    Ao receber um aluno devidamente cadastrado em nossa lista. Você deverá adicionar uma nota ao aluno na sua lista de notas. Você deverá dar um feedback ao concluir a tarefa. Só poderá aplicar nota em aluno se o mesmo tiver matriculado em um curso.
-*/
+/* Ao receber um aluno devidamente cadastrado em nossa lista.
+Você deverá adicionar uma nota ao aluno na sua lista de notas.
+Você deverá dar um feedback ao concluir a tarefa.
+Só poderá aplicar nota em aluno se o mesmo tiver matriculado em um curso.*/
+function aplicarNota(aluno, nota){
+  if (aluno.cursos.length > 0) {
+    aluno.notas.push(nota)
+    console.log(`Nota registrada para o aluno '${aluno.nome}`)
+  }
+  else
+    console.log(`Nota não registrada pois o aluno '${aluno.nome}' não possui cursos matriculados`)
 }
 
 function aprovarAluno(aluno/*:object*/){
